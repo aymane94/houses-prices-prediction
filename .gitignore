@@ -1,2 +1,5 @@
 00__Docs__/
 data/
+tests/
+logs.log
+.ipynb*
