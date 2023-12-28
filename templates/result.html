@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/reset.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/winstrap.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/winstrap-optional.min.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/result.css') }}"
+    />
+    <title>House Price Predictions</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- <div class="col-md-5">{% include 'nav.html' %}</div> -->
+        <div class="col-md-19">
+          <div class="content">
+            <div class="container-fluid">
+              <div class="row" style="width: 100%;">
+                <div class="col" style="width: 100%;">
+                  <div class="jumbotron theme-light">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-16">
+                          <div class="type-h2">House Price Predictor</div>
+                          <p>
+                            This application established for house's price prediction
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="container-fluid second">
+                <div class="row">
+                  <div class="col-md-24">
+                      
+                      <table class="container-result">
+                        <thead>
+                          <tr>
+                            <th><h1>Features</h1></th>
+                            <th><h1>Values</h1></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>County</td>
+                            <td>{{ data['county'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>City</td>
+                            <td>{{ data['city'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>District</td>
+                            <td>{{ data['district'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>Postcode Area</td>
+                            <td>{{ data['postcodeArea'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>Duration</td>
+                            <td>{{ data['duration'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>Month of Purchase</td>
+                            <td>{{ data['month'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>Pricing</td>
+                            <td>{{ data['ppdCategoryType'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>Property Type</td>
+                            <td>{{ data['propertyType'] }}</td>
+                          </tr>
+                          <tr>
+                            <td>Aging</td>
+                            <td>{{ data['oldNew'] }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                  </div>  
+                  
+                  <div class="jumbotron theme-light" >  <!-- style="background-color: white;padding-left: 0px;">  -->
+                    <div class="btn btn-primary" name="prediction">
+                      {{ prediction }}
+                    </div>
+                    
+                  </div>  
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+      
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/vendor/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vendor/app.js') }}"></script>
+  </body>
+</html>
