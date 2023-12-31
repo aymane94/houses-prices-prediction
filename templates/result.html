@@ -51,7 +51,7 @@
             <div class="container-fluid second">
               <div class="row">
 
-                <div class="col-md-16">
+                <div class="col-md-13">
                   <div class="container-result">
                     <ul class="responsive-table">
                       <li class="table-header">
@@ -97,16 +97,16 @@
                     </ul>
                   </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-11">
 
                   <div class="flex justify-between py-4 px-8 bg-[#ededed]  text-[#5d5d5d]">
-                    <p class="font-sans" style="font-size: 18px;">Based on features values as this table shows, the expected price is approximatly equal to : <b style="font-size: 18px;">${{ prediction }}</b></p>
+                    <p class="font-sans" style="font-size: 18px;">Based on features values as this table shows, the expected price is approximatly equal to : <b style="font-size: 18px;">$ {{ prediction }}</b></p>
                   </div>
 
                   <div class="flex justify-between py-4 px-8 bg-[#ededed]  text-[#5d5d5d]" style="font-size: 16px;">
                     <p class="font-sans" style="font-size: 18px;"><b>Notes</b></p>
                     <ul class="listing">
-                      <li>The Mean Income of the Area is around <b>${{ extra_data['areaIncome'] }}</b> </li>
+                      <li>The Mean Income of the Area is around <b>$ {{ extra_data['areaIncome'] }}</b> </li>
                       <li>On average, this County is considered <b>{{ extra_data['county'] }}</b></li>
                       <li>this City is considered <b>{{ extra_data['city'] }}</b></li>
                       <li>this District is considered <b>{{ extra_data['district'] }}</b></li>
