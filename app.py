@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify, render_template
 import pickle
 import json
 from sklearn.preprocessing import LabelEncoder
-from features_data.features import feature_form_structure, get_feature_mapping, income_ByPostcode
+from features_data.features import feature_form_structure, get_feature_mapping, income_ByPostcode, classify_area
 
 app = Flask(__name__)
 
@@ -87,11 +87,21 @@ def predict():
         income_ByPostcode[data["postcodeArea"]]
     ]
 
+    # add more info
+    extra_data = {
+        "areaIncome" : income_ByPostcode[data["postcodeArea"]],
+        "county": classify_area(weight=counties_weights[data["county"]]),
+        "city": classify_area(weight=cities_weights[data["city"]]),
+        "district": classify_area(weight=districts_weights[data["district"]]),
+        "postcodeArea": classify_area(weight=postcodeArea_weights[data["postcodeArea"]]),
+    }
+
+
     # house price prediction
     prediction = model.predict([features])
     expected_price = np.expm1(prediction)[0]
 
-    return render_template('result.html', data=data, prediction=expected_price)
+    return render_template('result.html', data=data, extra_data=extra_data ,prediction=expected_price)
 
 if __name__ == '__main__':
     app.run(debug=True)

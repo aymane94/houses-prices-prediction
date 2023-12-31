@@ -3,6 +3,18 @@ import json
 def get_feature_mapping(category,feature):
     return list(filter(lambda x:x["nameId"]==feature,feature_form_structure[category]))[0]["Data"]["Form"]
 
+
+coef_types_weights = {
+    'Normal' : lambda x : True if -1 <= x < 1 else False,
+    'Poor': lambda x : True if -3 <= x < -1 else False,
+    'Rich': lambda x : True if 1 <= x < 3 else False,
+    'Very Poor': lambda x : True if -5 <= x < -3 else False,
+    'Very Rich': lambda x : True if 3 <= x < 5 else False,
+}
+
+def classify_area(weight,coef_types_weights = coef_types_weights):
+    return list({k:v(weight) for k,v in  coef_types_weights.items() if v(weight)})[0]
+
 with open("./features_data/data.json",'r') as file:
     file_data = json.load(file)
     features_data = file_data["data"]
@@ -48,22 +60,6 @@ feature_form_structure = {
         },
     ],
     'Time': [
-        # {
-        #     'Label': 'LotFrontage',
-        #     'nameId': "LotFrontage",
-        #     'Data' :  {
-        #         'Description': 'Linear feet of street connected to property',
-        #         'Form': 'float64',
-        #     }
-        # },
-        # {
-        #     'Label': 'LotArea',
-        #     'nameId': "LotArea",
-        #     'Data' :  {
-        #         'Description': 'Lot size in square feet',
-        #         'Form': 'float64'
-        #     },
-        # },
         {
             'Label': 'Age',
             'nameId': "oldNew",

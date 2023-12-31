@@ -30,97 +30,98 @@
   <body>
     <div class="container-fluid">
       <div class="row">
-        <!-- <div class="col-md-5">{% include 'nav.html' %}</div> -->
-        <div class="col-md-19">
-          <div class="content">
-            <div class="container-fluid">
-              <div class="row" style="width: 100%;">
-                <div class="col" style="width: 100%;">
-                  <div class="jumbotron theme-light">
-                    <div class="container">
-                      <div class="row">
-                        <div class="col-md-16">
-                          <div class="type-h2">House Price Predictor</div>
-                          <p>
-                            This application established for house's price prediction
-                          </p>
-                        </div>
+        <div class="content">
+          <div class="container-fluid">
+            <div class="row" style="width: 100%;">
+              <div class="col" style="width: 100%;">
+                <div class="jumbotron theme-light">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-16">
+                        <div class="type-h2">House Price Predictor</div>
+                        <p>
+                          This application established for house's price prediction
+                        </p>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="container-fluid second">
-                <div class="row">
-                  <div class="col-md-24">
-                      
-                      <table class="container-result">
-                        <thead>
-                          <tr>
-                            <th><h1>Features</h1></th>
-                            <th><h1>Values</h1></th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>County</td>
-                            <td>{{ data['county'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>City</td>
-                            <td>{{ data['city'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>District</td>
-                            <td>{{ data['district'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>Postcode Area</td>
-                            <td>{{ data['postcodeArea'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>Duration</td>
-                            <td>{{ data['duration'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>Month of Purchase</td>
-                            <td>{{ data['month'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>Pricing</td>
-                            <td>{{ data['ppdCategoryType'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>Property Type</td>
-                            <td>{{ data['propertyType'] }}</td>
-                          </tr>
-                          <tr>
-                            <td>Aging</td>
-                            <td>{{ data['oldNew'] }}</td>
-                          </tr>
-                        </tbody>
-                      </table>
+            </div>
+            <div class="container-fluid second">
+              <div class="row">
 
-                  </div>  
-                  
-                  <div class="jumbotron theme-light" >  <!-- style="background-color: white;padding-left: 0px;">  -->
-                    <div class="btn btn-primary" name="prediction">
-                      {{ prediction }}
-                    </div>
-                    
-                  </div>  
+                <div class="col-md-16">
+                  <div class="container-result">
+                    <ul class="responsive-table">
+                      <li class="table-header">
+                        <div class="datacol datacol1">Feature</div>
+                        <div class="datacol datacol2">Value</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">County</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['county'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">City</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['city'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">District</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['district'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">Postcode Area</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['postcodeArea'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">Duration</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['duration'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">Month of Purchase</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['month'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">Pricing</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['propertyType'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">Property Type</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['county'] }}</div>
+                      </li>
+                      <li class="table-row">
+                        <div class="datacol datacol1" data-label="Feature">Aging</div>
+                        <div class="datacol datacol2" data-label="Value">{{ data['oldNew'] }}</div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-md-8">
+
+                  <div class="flex justify-between py-4 px-8 bg-[#ededed]  text-[#5d5d5d]">
+                    <p class="font-sans" style="font-size: 18px;">Based on features values as this table shows, the expected price is approximatly equal to : <b style="font-size: 18px;">${{ prediction }}</b></p>
+                  </div>
+
+                  <div class="flex justify-between py-4 px-8 bg-[#ededed]  text-[#5d5d5d]" style="font-size: 16px;">
+                    <p class="font-sans" style="font-size: 18px;"><b>Notes</b></p>
+                    <ul>
+                      <li>The Mean Income of the Area is around <b>${{ extra_data['areaIncome'] }}</b> </li>
+                      <li>On average, this County is considered <b>{{ extra_data['county'] }}</b></li>
+                      <li>this City is considered <b>{{ extra_data['city'] }}</b></li>
+                      <li>this District is considered <b>{{ extra_data['district'] }}</b></li>
+                    </ul>
+                  </div>
 
                 </div>
               </div>
+
             </div>
           </div>
         </div>
-      
+
       
       </div>
     </div>
-    <script src="{{ url_for('static', filename='js/vendor/jquery.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/vendor/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/vendor/app.js') }}"></script>
   </body>
 </html>
