@@ -104,4 +104,4 @@ def predict():
     return render_template('result.html', data=data, extra_data=extra_data ,prediction=expected_price)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=False)
