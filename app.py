@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
@@ -104,4 +105,5 @@ def predict():
     return render_template('result.html', data=data, extra_data=extra_data ,prediction=expected_price)
 
 if __name__ == '__main__':
-    app.run(debug=False)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(debug=False, port=port)
